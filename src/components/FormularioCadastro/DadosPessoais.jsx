@@ -34,7 +34,8 @@ function DadosPessoais({aoEnviar, validarCpf}) {
             label="Nome" 
             variant="outlined" 
             fullWidth 
-            margin="normal"/>
+            margin="normal"
+            required/>
        
         <TextField
             value={sobrenome}
@@ -45,7 +46,8 @@ function DadosPessoais({aoEnviar, validarCpf}) {
             label="Sobrenome"
             variant="outlined" 
             fullWidth 
-            margin="normal"/>
+            margin="normal"
+            required />
        
         <TextField 
             value={cpf}
@@ -65,7 +67,8 @@ function DadosPessoais({aoEnviar, validarCpf}) {
             type="number"
             variant="outlined" 
             fullWidth 
-            margin="normal"/>   
+            margin="normal"
+            required/>   
 
         <FormControlLabel
             label="Promoções"
@@ -92,7 +95,7 @@ function DadosPessoais({aoEnviar, validarCpf}) {
         <Button 
             variant="contained" 
             color="primary"
-            type="submit">Cadastrar
+            type="submit">Próximo
         </Button>
      </form>
     );

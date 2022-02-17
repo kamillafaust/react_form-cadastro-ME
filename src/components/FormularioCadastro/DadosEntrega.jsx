@@ -11,6 +11,7 @@ function DadosEntrega() {
                 type="number"
                 variant="outlined"
                 margin="normal"
+                required
             />
             <TextField
                 id="endereco"
@@ -19,6 +20,7 @@ function DadosEntrega() {
                 variant="outlined"
                 margin="normal"
                 fullWidth
+                required
             />
             <TextField
                 id="numero"
@@ -26,6 +28,7 @@ function DadosEntrega() {
                 type="number"
                 variant="outlined"
                 margin="normal"
+                required
             />
             <TextField
                 id="cidade"
@@ -33,6 +36,7 @@ function DadosEntrega() {
                 type="text"
                 variant="outlined"
                 margin="normal"
+                required
             />
             <TextField
                 id="estado"
@@ -40,6 +44,7 @@ function DadosEntrega() {
                 type="text"
                 variant="outlined"
                 margin="normal"
+                required
             />
             <Button
                 type="submit"
@@ -48,8 +53,6 @@ function DadosEntrega() {
                 fullWidth
             >Finalizar Cadastro
             </Button>
-
-
         </form>
     );
 }

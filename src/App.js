@@ -13,7 +13,7 @@ class App extends Component {
       <FormularioCadastro aoEnviar={aoEnviarForm} validarCpf = {validarCpf}/>
     </Container>
   );
-}
+  }
 }
 
 function aoEnviarForm(dados){
