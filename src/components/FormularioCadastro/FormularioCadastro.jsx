@@ -1,40 +1,48 @@
-import { Typography } from '@material-ui/core';
-import React, { useState } from 'react';
+import { Typography, Stepper, Step, StepLabel } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
 import DadosEntrega from './DadosEntrega';
 import DadosPessoais from './DadosPessoais';
 import DadosUsuario from './DadosUsuario';
 
-
-function FormularioCadastro({aoEnviar, validarCpf}) {
+                              //função de retornar os dados
+function FormularioCadastro({aoEnviar}) {
 
     const [etapaAtual, setEtapaAtual] = useState(0);
+    const [dadosColetados, setDadosColetados] = useState({}); 
+
+    useEffect(() => {
+        if(etapaAtual === formulario.length - 1) {
+            aoEnviar(dadosColetados);
+        }
+    });
+    
+    const formulario = [
+        <DadosUsuario aoAvancar={coletarDados} />,
+        <DadosPessoais aoAvancar={coletarDados} />,
+        <DadosEntrega aoAvancar={coletarDados} />,
+        <Typography variant="h5">Cadastro realizado com sucesso!</Typography>
+    ];
+
+    function coletarDados(novosDados) {
+        setDadosColetados({...dadosColetados, ...novosDados, teste: 'teste'});
+        proximo();
+    }
 
     function proximo() {
         setEtapaAtual(etapaAtual + 1);
     }
 
-    function formularioAtual(etapa) {
-        switch (etapa) {
-            case 0:
-                return <DadosUsuario aoEnviar={proximo}/>;
-            case 1:
-                return <DadosPessoais aoEnviar={proximo} validarCpf={validarCpf}  />;
-            case 2:
-                return <DadosEntrega aoEnviar={aoEnviar}/>;
-            default:
-                return <Typography>Erro ao selecionar formulário</Typography>;
-        }
-    }
-
     return (
         <>
-            {formularioAtual(etapaAtual)}
+            <Stepper activeStep={etapaAtual} >
+                <Step><StepLabel>Login</StepLabel></Step>
+                <Step><StepLabel>Pessoal</StepLabel></Step>
+                <Step><StepLabel>Entrega</StepLabel></Step>
+                <Step><StepLabel>Finalização</StepLabel></Step>
+            </Stepper>
+            {formulario[etapaAtual]}
         </>
     );
 }
-
-//<DadosUsuario />
-//<DadosPessoais aoEnviar={aoEnviar} validarCpf={validarCpf} />
-//<DadosEntrega />
 
 export default FormularioCadastro;
